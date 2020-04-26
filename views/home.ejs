@@ -17,6 +17,47 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>confirmed</th>
+                <th>deaths</th>
+                <th>recovered</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><%= latest.confirmed %></th>
+                <th><%= latest.deaths %></th>
+                <th><%= latest.recovered %></th>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Country</th>
+                <th scope="col">Population</th>
+                <th scope="col">Province</th>
+                <th scope="col">Confirmed</th>
+                <th scope="col">deaths</th>
+                <th scope="col">recovered</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% locations.forEach(function(loc) { %>
+                <tr>
+                    <th scope="row"><%= loc.id + 1%></th>
+                    <th scope="row"><%= loc.country%></th>
+                    <th scope="row"><%= loc.country_population%></th>
+                    <th scope="row"><%= loc.province || "-"%></th>
+                    <th scope="row"><%= loc.latest.confirmed%></th>
+                    <th scope="row"><%= loc.latest.deaths%></th>
+                    <th scope="row"><%= loc.latest.recovered%></th>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </body>
 </html>
